@@ -1,0 +1,119 @@
+.container{
+    display: flex;
+    justify-content: center;
+    min-height: 400px;
+    gap: 10px;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+
+h1{
+   
+    font-size: 2.4rem;
+    /* margin: 20px 30px; */
+}
+
+.tittle{
+    align-items: center;
+    justify-content: lef;
+    display: flex;
+    text-align: center;
+    margin-top: 0;
+}
+
+span{
+    color: #e3e3e3;
+}
+.column{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    min-width: 200px;
+    border-radius: 25px;
+    
+}
+
+.column_backlog{
+    background: linear-gradient(to bottom, #E27272 12%, #D8D4D4 12%);
+}
+
+.column_doing{
+    background: linear-gradient(to bottom, #E2D072 12%, #D8D4D4 12%);
+}
+
+.column_review{
+    background: linear-gradient(to bottom, #72E288 12%, #D8D4D4 12%);
+}
+
+.column_done{
+    background: linear-gradient(to bottom, #72C7E3 12%, #D8D4D4 12%);
+    
+}
+
+.p_backlog{
+    font-size: 1.5rem;
+    color: #534B4B;
+    text-align: center;
+}
+
+.p_doing{
+    font-size: 1.5rem;
+    color: #534B4B;
+    text-align: center;
+    
+}
+
+
+.p_review{
+    font-size: 1.5rem;
+    color: #534B4B;
+    text-align: center;
+}
+
+.p_done{
+    font-size: 1.5rem;
+    color: #534B4B;
+    text-align: center;
+}
+
+.add_item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:20px 20px;
+}
+
+.input_item, button{
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+    text-align: center;
+    outline: none;
+    margin-right: 10px; 
+    transition: transform 0.3s ease-in-out;
+
+}
+
+.input_item{
+    width: 400px;
+}
+
+button{
+    background-color: black; 
+    color: white;
+    cursor: pointer;
+}
+
+.input_item:focus,
+button:focus{
+    transform: scale(1.05);
+}
+
+.item{
+    background-color: white;
+    border-radius: 10px;
+    padding: 6px;
+    
+}
