@@ -1,6 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import "./style.css";
+
+interface CustomAlertProps {
+    content: string;
+    onClose: () => void;
+}
+
+
+
+
+const CustomAlert: React.FC<CustomAlertProps> = ({ content, onClose }) => {
+    useEffect(() => {
+        const timerId = setTimeout(() => {
+            onClose();
+        }, 3000);
+
+        return () => clearTimeout(timerId);
+    }, [onClose]);
+
+    return (
+        <div className="custom-alert">
+            <p>{content}</p>
+            <div className="progress"></div>
+        </div>
+    );
+};
+
+
 
 export default function Kanban() {
     const [backlogItems, setBacklogItems] = useState<string[]>([]);
@@ -8,6 +35,11 @@ export default function Kanban() {
     const [reviewItems, setReviewItems] = useState<string[]>([]);
     const [doneItems, setDoneItems] = useState<string[]>([]);
     const [newItemText, setNewItemText] = useState<string>("");
+    const [isDraggingOverTrash, setIsDraggingOverTrash] = useState(false);
+    const [showAlert, setShowAlert] = useState(false);
+    const [alertContent, setAlertContent] = useState("");
+
+
 
     function handleOnDrag(e: React.DragEvent, itemType: string) {
         e.dataTransfer.setData("text/plain", itemType);
@@ -16,55 +48,145 @@ export default function Kanban() {
     function handleOnDrop(e: React.DragEvent, targetColumn: string) {
         e.preventDefault();
         const itemType = e.dataTransfer.getData("text/plain");
-      
+
         setBacklogItems((prevItems) => prevItems.filter((item) => item !== itemType));
         setDoingItems((prevItems) => prevItems.filter((item) => item !== itemType));
         setReviewItems((prevItems) => prevItems.filter((item) => item !== itemType));
         setDoneItems((prevItems) => prevItems.filter((item) => item !== itemType));
-      
-        switch (targetColumn) {
-          case "backlog":
-            setBacklogItems((prevItems) => [...prevItems, itemType]);
-            break;
-          case "doing":
-            setDoingItems((prevItems) => [...prevItems, itemType]);
-            break;
-          case "review":
-            setReviewItems((prevItems) => [...prevItems, itemType]);
-            break;
-          case "done":
-            setDoneItems((prevItems) => [...prevItems, itemType]);
-            break;
-          default:
-            break;
-        }
-      
-        setNewItemText("");
-      }
 
+
+        if (targetColumn === "container-trash") {
+            setIsDraggingOverTrash(false);
+            handleDropOnTrash(itemType);
+        } else {
+            handleDropInColumn(targetColumn, itemType);
+        }
+
+        if (targetColumn !== "container-trash") {
+            switch (targetColumn) {
+                case "backlog":
+                    setBacklogItems((prevItems) => [...prevItems, itemType]);
+
+                    break;
+                case "doing":
+                    setDoingItems((prevItems) => [...prevItems, itemType]);
+
+                    break;
+                case "review":
+                    setReviewItems((prevItems) => [...prevItems, itemType]);
+
+                    break;
+                case "done":
+                    setDoneItems((prevItems) => [...prevItems, itemType]);
+
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        setNewItemText("");
+    }
+
+    function handleDropOnTrash(itemType: string) {
+        console.log(`Item "${itemType}" foi deletado!`);
+    }
+
+    function handleDropInColumn(targetColumn: string, itemType: string) {
+
+        switch (targetColumn) {
+            case "backlog":
+                setBacklogItems((prevItems) => prevItems.filter((item) => item !== itemType));
+                break;
+            case "doing":
+                setDoingItems((prevItems) => prevItems.filter((item) => item !== itemType));
+                break;
+            case "review":
+                setReviewItems((prevItems) => prevItems.filter((item) => item !== itemType));
+                break;
+            case "done":
+                setDoneItems((prevItems) => prevItems.filter((item) => item !== itemType));
+                break;
+            default:
+                break;
+        }
+    }
 
     function handleDragOver(e: React.DragEvent) {
         e.preventDefault();
+        setIsDraggingOverTrash(true);
     }
 
     function handleAddItem() {
         if (newItemText.trim() !== "") {
-            setBacklogItems((prevItems) => [...prevItems, newItemText]);
-            setNewItemText("");
+            const IsItemreadyExists =
+                backlogItems.includes(newItemText) ||
+                doingItems.includes(newItemText) ||
+                reviewItems.includes(newItemText) ||
+                doneItems.includes(newItemText);
+
+            if (!IsItemreadyExists) {
+                setBacklogItems((prevItems) => [...prevItems, newItemText]);
+                setNewItemText("");
+            } else {
+                setAlertContent("Ja existe uma tarefa com esse nome");
+                setShowAlert(true);
+            }
+
+
         }
     }
+
+    function handleEnterKey(e: React.KeyboardEvent<HTMLInputElement>) {
+        if (e.key === "Enter") {
+            handleAddItem();
+        }
+    }
+
+
     return (
         <>
-        <h1 className="tittle">Pro<span>Tasker</span></h1>
+
+
+
+            <h1 className="tittle">
+                Pro<span>Tasker</span>
+            </h1>
+
+            
             <div className="add_item">
-                <input className="input_item"
-                    type="text"
-                    placeholder="Digite seu item"
-                    value={newItemText}
-                    onChange={(e) => setNewItemText(e.target.value)}
-                />
-                <button onClick={handleAddItem}>Adicionar Item</button>
+                <div className="add_item">
+                    <input
+                        className="input_item"
+                        type="text"
+                        placeholder="Digite seu item"
+                        value={newItemText}
+                        onChange={(e) => setNewItemText(e.target.value)}
+                        onKeyDown={handleEnterKey}
+                    />
+                </div>
             </div>
+
+
+            <div className="container-trash">
+                    <div className={`icon-trash ${isDraggingOverTrash ? "drag-over" : ""}`}
+                onDragOver={(e) => {
+                    e.preventDefault();
+                    setIsDraggingOverTrash(true);
+                }}
+                onDragLeave={() => setIsDraggingOverTrash(false)}
+                onDrop={(e) => {
+                    setIsDraggingOverTrash(false);
+                    handleOnDrop(e, "icon-trash");
+                }}>
+
+                        <div className="trash-lid"></div>
+                        <div className="trash-container"></div>
+                        <div className="trash-line-1"></div>
+                        <div className="trash-line-2"></div>
+                        <div className="trash-line-3"></div>
+                    </div>
+                </div>  
             <div className="container">
                 <div
                     className="column_backlog column"
@@ -88,7 +210,7 @@ export default function Kanban() {
                     onDrop={(e) => handleOnDrop(e, "doing")}
                     onDragOver={handleDragOver}
                 >
-                     <h1 className="p_doing">Doing</h1>
+                    <h1 className="p_doing">Doing</h1>
                     {doingItems.map((item, index) => (
                         <div
                             key={index}
@@ -105,7 +227,7 @@ export default function Kanban() {
                     onDrop={(e) => handleOnDrop(e, "review")}
                     onDragOver={handleDragOver}
                 >
-                     <h1 className="p_review">Review</h1>
+                    <h1 className="p_review">Review</h1>
                     {reviewItems.map((item, index) => (
                         <div
                             key={index}
@@ -122,7 +244,7 @@ export default function Kanban() {
                     onDrop={(e) => handleOnDrop(e, "done")}
                     onDragOver={handleDragOver}
                 >
-                     <h1 className="p_done">Done</h1>
+                    <h1 className="p_done">Done</h1>
                     {doneItems.map((item, index) => (
                         <div
                             key={index}
@@ -140,8 +262,16 @@ export default function Kanban() {
                     onDrop={(e) => handleOnDrop(e, "page")}
                     onDragOver={handleDragOver}
                 >
-                </div>
             </div>
+
+            </div>
+                
+            {showAlert && (
+                <CustomAlert
+                    content={alertContent}
+                    onClose={() => setShowAlert(false)}
+                />
+            )}
         </>
     );
 }
