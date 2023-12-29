@@ -1,0 +1,131 @@
+
+.tittle{
+    align-items: center;
+    justify-content: lef;
+    display: flex;
+    text-align: center;
+    margin-top: 0;
+}
+
+span{
+    color: white;
+}
+
+.container_home{
+    color: white;
+    display: grid;
+    flex-direction: column;
+    margin: 100px 100px 0 100px;
+    grid-template-columns: 1fr 1fr; 
+    gap: 20px; 
+    
+
+}
+
+.container_form {
+    
+    box-sizing: border-box;
+}
+
+.slogan{
+    font-size: 3rem;
+}
+
+
+.description{
+    color: black;
+    margin-top: 20px;
+    
+}
+
+.input_email{
+    margin:20px 0 20px 0;
+    position: relative;
+    display: flex;
+}  
+
+
+.email_icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: rgb(97, 97, 97);
+    margin-left: 5px;
+    
+
+}
+.email{
+    font-size: 15px;
+    border-radius: 5px;
+    border: none;
+    padding: 12px;
+    padding-left: 40px;
+    min-width:400px ;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+    
+}
+
+.color_bar_progress_hover{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px; 
+    width: 0;
+    background: #6cc3e6;
+    transition: width 0.3s ease;
+}
+
+.input_email:hover .color_bar_progress_hover {
+    width: 400px; 
+}
+
+.submit{
+    background-image: linear-gradient(to right,#6cc3e6 , #39baec);
+    min-width: 100px;
+    min-height: 35px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    margin-left: 5px;
+    
+}
+
+
+.submit:hover{
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+
+.login_register{
+    display: flex;
+    align-items: center; 
+    
+}
+
+.register_text{
+    margin-left: 25px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.3s ease;
+}
+
+.register_text:hover{
+    transform: scale(1.4);
+}
+
+
+.container_image {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.img_kanban {
+    min-width: 600px;
+    width: 100%; 
+    margin-right: 200px;
+    
+}
+

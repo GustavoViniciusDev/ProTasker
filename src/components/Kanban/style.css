@@ -1,7 +1,7 @@
 .container{
     display: flex;
     justify-content: center;
-    min-height: 400px;
+    min-height: 200px;
     gap: 10px;
     padding: 10px;
     margin: 0 auto;
@@ -20,37 +20,78 @@ h1{
     display: flex;
     text-align: center;
     margin-top: 0;
+    margin-left: 30px;
 }
 
 span{
-    color: #e3e3e3;
+    color: white;
 }
 .column{
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    padding: 10px;
-    min-width: 200px;
+    gap: 20px;
+    min-width: 380px;
+    min-height: 600px;
     border-radius: 25px;
+    margin-right: 30px;
+    background: white;
     
 }
 
-.column_backlog{
-    background: linear-gradient(to bottom, #E27272 12%, #D8D4D4 12%);
+.content_items{
+padding: 20px;
 }
 
-.column_doing{
-    background: linear-gradient(to bottom, #E2D072 12%, #D8D4D4 12%);
+.item{
+    position: relative;
+    background-color: white;
+    border-radius: 10px;
+    padding: 6px;
+    margin-top: -20px;
+    min-height: 80px;
+    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.2);
+   
 }
 
-.column_review{
-    background: linear-gradient(to bottom, #72E288 12%, #D8D4D4 12%);
-}
 
-.column_done{
-    background: linear-gradient(to bottom, #72C7E3 12%, #D8D4D4 12%);
+.delete-icon {
+    position: absolute;
+    top: 5px; 
+    right: 5px;
+    cursor: pointer;
+  }
+
+
+.top_column {
+    min-width: 380px;
+    min-height: 60px;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
     
 }
+
+.backlog {
+    background: #E27272;
+    
+}
+
+.doing {
+    background: #E2D072;
+    
+}
+
+.review {
+    background: #72E288;
+   
+}
+
+.done {
+    background: #72C7E3;
+    
+}
+
+
+
 
 .p_backlog{
     font-size: 1.5rem;
@@ -111,12 +152,6 @@ button:focus{
     transform: scale(1.05);
 }
 
-.item{
-    background-color: white;
-    border-radius: 10px;
-    padding: 6px;
-    
-}
 
 .container-trash{
     width: 60px;
@@ -312,5 +347,13 @@ button:focus{
     }
     100% {
         right: 0;
+    }
+}
+
+
+@media screen and (max-width: 1100px) {
+    .container {
+        flex-direction: column; 
+        align-items: center; 
     }
 }
