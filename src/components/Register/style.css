@@ -1,0 +1,201 @@
+.container_register {
+    background-color: rgba(255, 255, 255, 0.8); 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 800px;
+    margin: auto;
+  }
+
+  .form_register {
+    max-width: 400px; 
+    margin: 0 auto;
+  }
+
+
+
+/*-------------------------Name------------------------------  */
+
+  .input_name{
+    margin:20px 0 20px 0;
+    position: relative;
+    display: flex;
+}  
+
+
+.user_icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: rgb(97, 97, 97);
+    margin-left: 5px;
+    
+
+}
+.name{
+    font-size: 15px;
+    border-radius: 5px;
+    border: none;
+    padding: 12px;
+    padding-left: 40px;
+    min-width:400px ;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+    
+}
+
+.color_bar_progress_hover_user{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px; 
+    width: 0;
+    background: #6cc3e6;
+    transition: width 0.3s ease;
+}
+
+.input_name:hover .color_bar_progress_hover_user {
+    width: 400px; 
+}
+
+
+
+/*-------------------------Email------------------------------  */
+
+
+.input_email{
+    margin:20px 0 20px 0;
+    position: relative;
+    display: flex;
+}  
+
+
+.email_icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: rgb(97, 97, 97);
+    margin-left: 5px;
+    
+
+}
+.email{
+    font-size: 15px;
+    border-radius: 5px;
+    border: none;
+    padding: 12px;
+    padding-left: 40px;
+    min-width:400px ;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+    
+}
+
+.color_bar_progress_hover{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px; 
+    width: 0;
+    background: #6cc3e6;
+    transition: width 0.3s ease;
+}
+
+.input_email:hover .color_bar_progress_hover {
+    width: 400px; 
+}
+
+
+/*-------------------------Password------------------------------  */
+
+.input_password{
+    margin:20px 0 20px 0;
+    position: relative;
+    display: flex;
+}  
+
+
+.password_icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: rgb(97, 97, 97);
+    margin-left: 5px;
+    
+
+}
+.password{
+    font-size: 15px;
+    border-radius: 5px;
+    border: none;
+    padding: 12px;
+    padding-left: 40px;
+    min-width:400px ;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+    
+}
+
+.color_bar_progress_hover_pass{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px; 
+    width: 0;
+    background: #6cc3e6;
+    transition: width 0.3s ease;
+}
+
+.input_password:hover .color_bar_progress_hover_pass {
+    width: 400px; 
+}
+
+
+/*-------------------------ConfirmPassword------------------------------  */
+
+.input_conf_password{
+    margin:20px 0 20px 0;
+    position: relative;
+    display: flex;
+}  
+
+
+.password_conf_icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: rgb(97, 97, 97);
+    margin-left: 5px;
+    
+
+}
+.conf_password{
+    font-size: 15px;
+    border-radius: 5px;
+    border: none;
+    padding: 12px;
+    padding-left: 40px;
+    min-width:400px ;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+    
+}
+
+.color_bar_progress_hover_conf_pass{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px; 
+    width: 0;
+    background: #6cc3e6;
+    transition: width 0.3s ease;
+}
+
+.input_conf_password:hover .color_bar_progress_hover_conf_pass {
+    width: 400px; 
+}

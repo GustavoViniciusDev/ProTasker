@@ -1,5 +1,5 @@
 
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import image_kanban from '../imgs/kanban_imagem.png';
@@ -17,7 +17,7 @@ export default function Home() {
             <div className="container_home">
                 <div className="container_form">
                     <h1 className="slogan">A simple choice <br /> for a difficult task</h1>
-                    <p className="description"></p>
+                    <p className="description">Log in now</p>
                     <form className="form_login" action="">
                         <div className="input_email">
                             <div className="color_bar"></div>
@@ -28,7 +28,8 @@ export default function Home() {
                         <div className="login_register">
                             <button className="submit"> Login</button>
                             <div className="register_text">
-                                <p>Click here <br/>to register</p>
+                                <Link to="../register"><p>Click here <br/>to register</p></Link>
+                                
                             </div>
                         </div>
                     </form>
