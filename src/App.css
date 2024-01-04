@@ -6,14 +6,14 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
 }
 
 body{
-    background: linear-gradient(to bottom right, #6cc3e6, #dddfdd, #6cc3e6);
-    background-repeat: no-repeat;
-    margin: 0;
-    padding: 0;
-    min-height: 100vh; 
-    display: flex;
-    flex-direction: column;
+    background: linear-gradient(to bottom right, #6cc3e6, #dddfdd, #6cc3e6) no-repeat right top fixed;
+    /* background-repeat: no-repeat;
+   background-size: cover; */
+    /* min-height: 100vh;  */
+    /* display: flex; */
+    /* flex-direction: column; */
 }

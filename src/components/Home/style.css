@@ -1,10 +1,12 @@
 
-.tittle{
+.tittle_home{
     align-items: center;
-    justify-content: lef;
+    justify-content: left;
     display: flex;
     text-align: center;
     margin-top: 0;
+    margin-left: 30px;
+    padding: 0;
 }
 
 span{
@@ -38,14 +40,14 @@ span{
     
 }
 
-.input_email{
+.input_username{
     margin:20px 0 20px 0;
     position: relative;
     display: flex;
 }  
 
 
-.email_icon {
+.user_icon {
     position: absolute;
     left: 10px;
     top: 50%;
@@ -56,7 +58,7 @@ span{
     
 
 }
-.email{
+.username{
     font-size: 15px;
     border-radius: 5px;
     border: none;
@@ -77,7 +79,7 @@ span{
     transition: width 0.3s ease;
 }
 
-.input_email:hover .color_bar_progress_hover {
+.user_icon:hover .color_bar_progress_hover {
     width: 400px; 
 }
 
@@ -98,35 +100,20 @@ span{
 }
 
 
-.login_register{
-    display: flex;
-    align-items: center; 
-    
-}
-
-.register_text{
-    margin-left: 25px;
-    cursor: pointer;
-    font-size: 12px;
-    transition: all 0.3s ease;
-}
-
-.register_text:hover{
-    transform: scale(1.4);
-}
-
 
 .container_image {
     flex: 1;
-    position: relative;
-    overflow: hidden;
+    
 }
 
 .img_kanban {
-    min-width: 600px;
-    width: 100%; 
-    margin-right: 200px;
-    
+    max-width: 40rem;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    display:flex; 
+    object-fit: contain;
+    object-position: 50% 50%;
 }
 
 a{
@@ -134,3 +121,29 @@ a{
     color: white;
 }
 
+
+
+@media only screen and (max-width: 1000px) {
+    .tittle_home {
+        font-size: 1.5rem; 
+    }
+
+    .slogan {
+        font-size: 2rem; 
+    }
+
+    .username {
+        font-size: 13px; 
+        min-width: 300px;
+    }
+
+    .submit {
+        min-width: 80px; 
+    }
+
+    .img_kanban {
+        display: none;
+    }
+
+
+}
